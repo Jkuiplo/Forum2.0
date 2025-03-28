@@ -1,0 +1,24 @@
+{
+  "name": "forum",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "Forum",
+    "Express"
+  ],
+  "homepage": "https://github.com/Jkuiplo/Forum2.0#readme",
+  "bugs": {
+    "url": "https://github.com/Jkuiplo/Forum2.0/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jkuiplo/Forum2.0.git"
+  },
+  "license": "ISC",
+  "author": "Grisha",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
