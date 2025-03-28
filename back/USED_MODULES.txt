@@ -1,0 +1,1 @@
+modules: express dotenv cors bcrypt jsonwebtoken express-validator
