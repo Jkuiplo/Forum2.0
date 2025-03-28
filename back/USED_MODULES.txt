@@ -1,1 +1,2 @@
-modules: express dotenv cors bcrypt jsonwebtoken express-validator
+modules: express dotenv cors bcrypt jsonwebtoken express-validator sqlite bcryptjs
+dev: nodemon
