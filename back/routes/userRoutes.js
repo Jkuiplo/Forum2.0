@@ -39,7 +39,7 @@ router.post("/login", (req, res) => {
 
 	db.get(`SELECT * FROM users WHERE email = ?`, [email], async (err, user) => {
 		if(err || !user) {
-			return res.status(400).json({message: "Такого пользователя не сущуствует" });
+			return res.status(400).json({message: "Такого пользователя не существует" });
 		}
 
 		const isMatch = await bcrypt.compare(password, user.password);
@@ -52,5 +52,29 @@ router.post("/login", (req, res) => {
 	});
 });
 
+
+// Middleware для проверки JWT
+const authMiddleware = (req, res, next) => {
+    const token = req.header('Authorization');
+    if (!token) return res.status(401).json({ message: 'Нет доступа' });
+
+    try {
+        const decoded = jwt.verify(token.replace('Bearer ', ''), SECRET_KEY);
+        req.user = decoded;
+        next();
+    } catch (err) {
+        res.status(401).json({ message: 'Неверный токен' });
+    }
+};
+
+// 📌 Получение профиля текущего пользователя
+router.get('/me', authMiddleware, (req, res) => {
+    db.get(`SELECT id, username, email FROM users WHERE id = ?`, [req.user.id], (err, user) => {
+        if (err || !user) {
+            return res.status(404).json({ message: 'Пользователь не найден' });
+        }
+        res.json(user);
+    });
+});
 
 module.exports = router;
