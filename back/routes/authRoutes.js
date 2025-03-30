@@ -1,4 +1,16 @@
 const express = require("express");
+const {registerUser, loginUser, getUserProfile} = require("../controllers/authController");
+const authMiddleware = require("../middleware/authMiddleware");
+
+const router = express.Router();
+
+router.post("/register", registerUser);
+router.post("/login", loginUser);
+router.get("/me", authMiddleware, getUserProfile);
+
+module.exports = router;
+
+/*const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const sqlite3 = require("sqlite3").verbose();
@@ -75,6 +87,6 @@ router.get('/me', authMiddleware, (req, res) => {
         }
         res.json(user);
     });
-});
+});*/
 
-module.exports = router;
+
