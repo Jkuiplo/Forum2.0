@@ -1,0 +1,284 @@
+html body{
+    overscroll-behavior: none;
+}
+body {
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+::-webkit-scrollbar{
+    width: 10px;
+    background-color: #f9f9fd;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #2C1C74;
+}
+::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background-color: #f9f9fd;
+}
+header {
+    background-color: #ffffff;
+    width: 100%;
+    height: 3rem;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5%;
+    padding-right: 0;
+    padding-left: 0;
+    z-index: 5;
+    position: fixed;
+}
+
+
+
+.logo {
+    margin-left: 5rem;
+    justify-self: start;
+    font-family: Glegoo, sans-serif;
+    stroke: #7700FF;
+}
+
+.firsLOGO {
+    color: #875252;
+}
+
+.SecondLOGO {
+    margin: 0.3rem;
+    color: #2C1C74;
+    stroke: #7700FF;
+}
+
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #a195c2;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 300px;
+}
+
+.search-icon img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.search-container input {
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 1rem;
+    color: #4c3a6e;
+    width: 50%;
+    font-family: "Gloria Hallelujah", cursive;
+}
+
+.profile-on-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: auto;
+    white-space: nowrap;
+    padding-right: 1vw;
+}
+h2{
+    font-family: 'Glegoo', serif;
+    color: #2C1C74;
+    -webkit-text-stroke: 1px #7700FF;
+    font-size: 1rem;
+}
+#names {
+    font-family: 'Glegoo', serif;
+    color: #2C1C74;
+    -webkit-text-stroke: 1px #7700FF;
+    font-size: 1rem;
+    text-align: right;
+    flex-grow: 1;
+}
+
+.PROFimg {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh; /* Полная высота экрана */
+}
+
+.leftbar {
+    margin-top: 3rem;
+    position: fixed; /* Теперь фиксированное положение */
+    left: 0; /* Учитываем высоту header */
+    width: 250px;
+    height: calc(100vh - 8rem); /* Высота экрана без учета header */
+    background: white;
+    color: white;
+    padding-top: 20px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+    border-right: 1px black solid;
+}
+.leftbar.hidden {
+    transform: translateX(-100%);
+}
+.hashtagss{
+    padding: 1rem;
+}
+.toggle-btn {
+    position: fixed;
+    padding: 1vw;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.toggle-btn img{
+    height: 2rem;
+    width: 2rem;
+
+}
+.adder_button{
+    font-family: glegoo;
+    margin-left: 1vw;
+    padding: 5px 0;
+    color: 7700FF;
+}
+.adder_button img{
+    height: 20px;
+    width: 20px;
+}
+.content {
+    flex-grow: 1; /* Контент займет оставшееся пространство */
+    padding: 20px;
+}
+.mainTAGS {
+    display: flex;
+    align-items: center; /* Выравнивание по центру */
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px; /* Промежутки между элементами */
+}
+
+
+.menu {
+    list-style: none;
+    padding: 0;
+    width: 200px;
+}
+.menu-btn {
+    display: flex;
+    align-items: center; /* Выравниваем текст и иконку */
+    font-family: 'Glegoo', serif;
+    font-weight: bold;
+    color: purple;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    background: none;
+    padding: 10px;
+    gap: 10%; /* Отступ между иконкой и текстом */
+}
+
+.menu-btn img {
+    width: 20px;
+    height: 20px;
+}
+input{
+    padding: 5px 0;
+    color: #7700FF;
+}
+.post-title{
+    text-align: center;
+    width: 12rem;
+    height: 2rem;
+    background-color: #ffffff;
+    margin: 1rem;
+    margin-left: 0;
+    border-radius: 5px;
+    border: 2px solid #7700FF;
+    font-family: Helvetica;
+}
+.post-title ::selection{
+    border: 2px solid #7700FF;
+}
+.post-content{
+    text-align: center;
+    width: 12rem;
+    height: 3rem;
+    background-color: #ffffff;
+    margin: 1rem;
+    margin-left: 0;
+    margin-top: 0;
+    border-radius: 5px;
+    border: 2px solid #7700FF;
+    font-family: Helvetica;
+}
+.post_file{
+    display: none; /* Скрываем стандартный инпут */
+}
+.post_file_label {
+    font-family: Helvetica;
+    display: block; /* Делаем блочным, чтобы он выглядел как input */
+    width: 11rem;
+    height: 1rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 2px solid #7700FF;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1rem; /* Центрирование текста по вертикали */
+    cursor: pointer;
+    color: #4c3a6e;
+}
+.submenu {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+.submenu li {
+    font-family: glegoo;
+    margin-left: 1vw;
+    padding: 5px 0;
+    color: 7700FF;
+}
+
+/* Активный класс */
+.submenu.active {
+    max-height: 250px; /* Регулируй по количеству пунктов */
+    opacity: 1;
+}
+
+/* Анимация стрелки */
+.menu-btn .arrow {
+    transition: transform 0.3s ease;
+}
+.menu-btn.active .arrow {
+    transform: rotate(180deg);
+}
+.arrow{
+    margin-left: 10rem;
+    position: absolute;
+}
