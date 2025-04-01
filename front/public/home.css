@@ -1,0 +1,32 @@
+@media (max-width: 768px) {
+    .leftbar {
+        position: fixed;
+        width: 220px;
+        z-index: 999;
+    }
+    .leftbar.show {
+        transform: translateX(0);
+    }
+    
+    header{
+        display: flex;
+    }
+    #names{
+        display: none;
+        justify-content: center;
+    }
+    .logo{
+        display: none;
+    }
+}
+.post {
+    margin-top: 10vh;
+    height: 25rem;
+    width: 50rem;
+    max-width: auto; 
+    border: 0.1rem solid black;
+}
+/* часть верхнего поста */
+.profile_on_post{
+    
+}   
