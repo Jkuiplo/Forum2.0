@@ -48,10 +48,14 @@
                 <div class="hashtagss">
                     <button class="menu-btn"><img src="img/adder.svg"><span>add post</span><span class="arrow"><img src="img/Line_noneact.svg"> </span> </button><!-- кнопка для добавление нового поста в лефт баре будет -->
                     <div class="submenu">
-                        <input    class="post-title" type="text" class="post-title" id="NewPost_title" placeholder="введите заголовок поста">
-                        <textarea class="post-content" id="NewPost_content" placeholder="введите свой пост"></textarea>
-                        <label for="NewPost_file" class="post_file_label" aria-placeholder="selectfile">вложите файл</label>
+                        <input    class="post-title post_main" type="text" class="post-title" id="NewPost_title" placeholder="введите заголовок поста">
+                        <textarea class="post-content post_main" id="NewPost_content" placeholder="введите свой пост"></textarea>
+                        <label for="NewPost_file" class="post_file_label post_main" aria-placeholder="selectfile">вложите файл</label>
                         <input class="post_file" type="file" id="NewPost_file">
+                        <button class="upload_post post_main" id="upload_post">
+                            запостить
+
+                        </button>
                     </div>
                         
                 
@@ -105,8 +109,8 @@
                         </span>
                     </span>
                     <span class="middlepost">
-                        <span class="post_img">
-                            <img src="" id="imgPOST"> <!-- изображение для поста ID= "imgPOST"  -->
+                        <span class="post_content">
+                            <img src="" id="CONT_POST"> <!-- изображение для поста ID= "imgPOST"  -->
                         </span>
                     </span>
                     <span class="bottompost">

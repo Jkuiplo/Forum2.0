@@ -81,7 +81,7 @@ header {
     outline: none;
     font-size: 1rem;
     color: #4c3a6e;
-    width: 50%;
+    width: 90%;
     font-family: "Gloria Hallelujah", cursive;
 }
 
@@ -118,7 +118,8 @@ h2{
 .main-container {
     display: flex;
     justify-content: center;
-    height: 100vh; /* Полная высота экрана */
+    align-items: flex-start;
+    min-height: 100vh; /* Полная высота экрана */
 }
 
 .leftbar {
@@ -126,7 +127,7 @@ h2{
     position: fixed; /* Теперь фиксированное положение */
     left: 0; /* Учитываем высоту header */
     width: 250px;
-    height: calc(100vh - 8rem); /* Высота экрана без учета header */
+    height: calc(100vh); /* Высота экрана без учета header */
     background: white;
     color: white;
     padding-top: 20px;
@@ -237,10 +238,10 @@ input{
 .post_file_label {
     font-family: Helvetica;
     display: block; /* Делаем блочным, чтобы он выглядел как input */
-    width: 11rem;
+    width: 10.8rem;
     height: 1rem;
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 3px;
     border: 2px solid #7700FF;
     padding: 0.5rem;
     font-size: 1rem;
@@ -248,6 +249,18 @@ input{
     line-height: 1rem; /* Центрирование текста по вертикали */
     cursor: pointer;
     color: #4c3a6e;
+}
+.upload_post{
+    text-align: center;
+    width: 12rem;
+    height: 3rem;
+    background-color: #ffffff;
+    margin: 1rem;
+    margin-left: 0;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 2px solid #7700FF;
+    font-family: Helvetica;
 }
 .submenu {
     list-style: none;
@@ -264,7 +277,39 @@ input{
     padding: 5px 0;
     color: 7700FF;
 }
+@media (max-width: 768px) {
+    .post_main{
+        width: 90%;
+    }
+    .post_file_label{
+        width: 90%;
+    }
+    header{
+        padding:1vh;
+        height: 4vh;
+        z-index: 1000;
+    }
+    .search-wrapper{
+        margin-left:15% ;
+        width: 60%;
+        height: 2vh;
+    }
+    .search-container{
+        height: 2vh;
+    }
+    .search-container input{
+        height: 2vh;
+    }
+    .PROFimg{
+        width: 6vh;
+        height: 6vh;
+    }
+    .leftbar{
+        margin-top: 4vh;
+    }
 
+
+}
 /* Активный класс */
 .submenu.active {
     max-height: 250px; /* Регулируй по количеству пунктов */
