@@ -1,24 +1,29 @@
-html body{
+html body {
     overscroll-behavior: none;
 }
+
 body {
     top: 0;
     left: 0;
     margin: 0;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     width: 10px;
     background-color: #f9f9fd;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #2C1C74;
 }
-::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background-color: #f9f9fd;
 }
+
 header {
     background-color: #ffffff;
     width: 100%;
@@ -28,10 +33,11 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0.5%;
+    top: 0;
     padding-right: 0;
     padding-left: 0;
     z-index: 5;
-    position: fixed;
+    position: sticky;
 }
 
 
@@ -64,8 +70,8 @@ header {
     display: flex;
     align-items: center;
     background-color: #a195c2;
-    border-radius: 20px;
-    padding: 5px 10px;
+    border-radius: 5vw;
+    padding: 5px 5px;
     width: 300px;
 }
 
@@ -94,12 +100,14 @@ header {
     white-space: nowrap;
     padding-right: 1vw;
 }
-h2{
+
+h2 {
     font-family: 'Glegoo', serif;
     color: #2C1C74;
     -webkit-text-stroke: 1px #7700FF;
     font-size: 1rem;
 }
+
 #names {
     font-family: 'Glegoo', serif;
     color: #2C1C74;
@@ -114,33 +122,42 @@ h2{
     height: 3rem;
     border-radius: 50%;
 }
-
+.addPOST{
+    
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
 .main-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100vh; /* Полная высота экрана */
+    min-height: 100vh;
+    /* Полная высота экрана */
 }
 
 .leftbar {
-    margin-top: 3rem;
-    position: fixed; /* Теперь фиксированное положение */
-    left: 0; /* Учитываем высоту header */
+    position: fixed;
+    /* Теперь фиксированное положение */
+    left: 0;
+    /* Учитываем высоту header */
     width: 250px;
-    height: calc(100vh); /* Высота экрана без учета header */
+    height: calc(100vh);
     background: white;
     color: white;
-    padding-top: 20px;
     transition: transform 0.3s ease-in-out;
     z-index: 1;
     border-right: 1px black solid;
 }
+
 .leftbar.hidden {
     transform: translateX(-100%);
 }
-.hashtagss{
+    
+.hashtagss {
     padding: 1rem;
 }
+
 .toggle-btn {
     position: fixed;
     padding: 1vw;
@@ -148,33 +165,41 @@ h2{
     border: none;
     cursor: pointer;
     z-index: 1000;
+    top: 0;
 }
 
-.toggle-btn img{
+.toggle-btn img {
     height: 2rem;
     width: 2rem;
 
 }
-.adder_button{
+
+.adder_button {
     font-family: glegoo;
     margin-left: 1vw;
     padding: 5px 0;
     color: 7700FF;
 }
-.adder_button img{
+
+.adder_button img {
     height: 20px;
     width: 20px;
 }
+
 .content {
-    flex-grow: 1; /* Контент займет оставшееся пространство */
+    flex-grow: 1;
+    /* Контент займет оставшееся пространство */
     padding: 20px;
 }
+
 .mainTAGS {
     display: flex;
-    align-items: center; /* Выравнивание по центру */
+    align-items: center;
+    /* Выравнивание по центру */
     justify-content: space-between;
     padding: 10px;
-    gap: 10px; /* Промежутки между элементами */
+    gap: 10px;
+    /* Промежутки между элементами */
 }
 
 
@@ -183,9 +208,11 @@ h2{
     padding: 0;
     width: 200px;
 }
+
 .menu-btn {
     display: flex;
-    align-items: center; /* Выравниваем текст и иконку */
+    align-items: center;
+    /* Выравниваем текст и иконку */
     font-family: 'Glegoo', serif;
     font-weight: bold;
     color: purple;
@@ -195,73 +222,21 @@ h2{
     border: none;
     background: none;
     padding: 10px;
-    gap: 10%; /* Отступ между иконкой и текстом */
+    gap: 10%;
+    
+    /* Отступ между иконкой и текстом */
 }
 
 .menu-btn img {
     width: 20px;
     height: 20px;
 }
-input{
+
+input {
     padding: 5px 0;
     color: #7700FF;
 }
-.post-title{
-    text-align: center;
-    width: 12rem;
-    height: 2rem;
-    background-color: #ffffff;
-    margin: 1rem;
-    margin-left: 0;
-    border-radius: 5px;
-    border: 2px solid #7700FF;
-    font-family: Helvetica;
-}
-.post-title ::selection{
-    border: 2px solid #7700FF;
-}
-.post-content{
-    text-align: center;
-    width: 12rem;
-    height: 3rem;
-    background-color: #ffffff;
-    margin: 1rem;
-    margin-left: 0;
-    margin-top: 0;
-    border-radius: 5px;
-    border: 2px solid #7700FF;
-    font-family: Helvetica;
-}
-.post_file{
-    display: none; /* Скрываем стандартный инпут */
-}
-.post_file_label {
-    font-family: Helvetica;
-    display: block; /* Делаем блочным, чтобы он выглядел как input */
-    width: 10.8rem;
-    height: 1rem;
-    background-color: #ffffff;
-    border-radius: 3px;
-    border: 2px solid #7700FF;
-    padding: 0.5rem;
-    font-size: 1rem;
-    text-align: center;
-    line-height: 1rem; /* Центрирование текста по вертикали */
-    cursor: pointer;
-    color: #4c3a6e;
-}
-.upload_post{
-    text-align: center;
-    width: 12rem;
-    height: 3rem;
-    background-color: #ffffff;
-    margin: 1rem;
-    margin-left: 0;
-    margin-top: 1rem;
-    border-radius: 5px;
-    border: 2px solid #7700FF;
-    font-family: Helvetica;
-}
+
 .submenu {
     list-style: none;
     padding-left: 20px;
@@ -271,48 +246,56 @@ input{
     transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
     opacity: 0;
 }
+
 .submenu li {
     font-family: glegoo;
     margin-left: 1vw;
     padding: 5px 0;
     color: 7700FF;
 }
+
 @media (max-width: 768px) {
-    .post_main{
+    .post_main {
         width: 90%;
     }
-    .post_file_label{
+
+    .post_file_label {
         width: 90%;
     }
-    header{
-        padding:1vh;
-        height: 4vh;
+
+    header {
+        padding: 1vh;
+        height: 3vh;
         z-index: 1000;
     }
-    .search-wrapper{
-        margin-left:15% ;
+
+    .search-wrapper {
+        margin-left: 15%;
         width: 60%;
         height: 2vh;
     }
-    .search-container{
+
+    .search-container {
         height: 2vh;
     }
-    .search-container input{
+
+    .search-container input {
         height: 2vh;
     }
-    .PROFimg{
-        width: 6vh;
-        height: 6vh;
+
+    .PROFimg {
+        width: 5vh;
+        height: 5vh;
     }
-    .leftbar{
-        margin-top: 4vh;
-    }
+
 
 
 }
+
 /* Активный класс */
 .submenu.active {
-    max-height: 250px; /* Регулируй по количеству пунктов */
+    max-height: 250px;
+    /* Регулируй по количеству пунктов */
     opacity: 1;
 }
 
@@ -320,10 +303,143 @@ input{
 .menu-btn .arrow {
     transition: transform 0.3s ease;
 }
+
 .menu-btn.active .arrow {
     transform: rotate(180deg);
 }
-.arrow{
+
+.arrow {
     margin-left: 10rem;
     position: absolute;
 }
+
+
+
+
+.popup-btn{
+    all: unset;
+}
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    width: 19.5vw;
+    height: 25vw;
+    min-width: 23rem;
+    background: white;
+    border: 3px solid black;
+    padding: 3rem;
+    padding-top: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .popup.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .close-btn {
+    top: 0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: transparent;
+
+  }
+
+  .close-btn img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .top-menu {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .top-menu img {
+    width: 3rem;
+    height: 3rem;
+  }
+  .upload-post img{
+    width: 2rem;
+    height: 2rem;
+  }
+  .upload-post{
+    
+    all: unset;
+    padding: 0 2rem 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+    width: 6rem;
+    height: 3rem;
+    border-radius: 15px;
+
+  }
+  .upload-file-post {
+    display: none;
+  }
+  .bottom-menu{
+    display: flex;
+    justify-content: space-between;
+  }
+  .upload-file-post-label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 5rem;
+    border: 2px solid black;
+    border-radius: 15px;
+
+  }
+  .upload-file-post-label img{
+    height: 2rem;
+    width: 2rem;
+  }
+  .post-title{
+    border: 2px solid black;
+    border-radius:15px ;
+    background-color: white;
+    height: 2.5rem;
+    padding-left: 1rem;
+  }
+  .post-content{
+    border: 2px solid black;
+    border-radius:15px ;
+    background-color: white;
+    height: 8rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+  }
