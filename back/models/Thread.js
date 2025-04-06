@@ -6,6 +6,7 @@ db.run(`
         title TEXT NOT NULL,
         content TEXT NOT NULL,
         user_id INTEGER NOT NULL,
+        image TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     )
@@ -18,9 +19,9 @@ db.run(`
 });
 
 const Thread = {
-    create: (title, content, user_id, callback) => {
-        db.run(`INSERT INTO threads (title, content, user_id) VALUES (?, ?, ?)`, 
-            [title, content, user_id], function (err) {
+    create: (title, content, user_id, image, callback) => {
+        db.run(`INSERT INTO threads (title, content, user_id, image) VALUES (?, ?, ?, ?)`, 
+            [title, content, user_id, image], function (err) {
                 callback(err, this?.lastID);
             }
         );
@@ -34,9 +35,9 @@ const Thread = {
         db.get(`SELECT * FROM threads WHERE id = ?`, [id], callback);
     },
 
-    update: (id, title, content, callback) => {
-        db.run(`UPDATE threads SET title = ?, content = ? WHERE id = ?`, 
-            [title, content, id], callback);
+    update: (id, title, content, image, callback) => {
+        db.run(`UPDATE threads SET title = ?, content = ?, image = ? WHERE id = ?`, 
+            [title, content, image, id], callback);
     },
 
     delete: (id, callback) => {

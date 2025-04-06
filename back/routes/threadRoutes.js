@@ -1,19 +1,35 @@
 const express = require("express");
+const multer = require("multer");
 const Thread = require("../models/Thread");
 const authMiddleware = require("../middleware/authMiddleware");
+const path = require("path");
 
 const router = express.Router();
 
-// 📌 Создать тред
-router.post("/", authMiddleware, (req, res) => {
+// Настройка хранилища для изображений
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '../uploads'));
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname));
+    },
+});
+
+const upload = multer({ storage: storage });
+
+// 📌 Создать тред с изображением
+router.post("/", authMiddleware, upload.single('image'), (req, res) => {
     const { title, content } = req.body;
+    const image = req.file ? req.file.path : null;
+
     if (!title || !content) {
         return res.status(400).json({ message: "Введите заголовок и текст" });
     }
 
-    Thread.create(title, content, req.user.id, (err, threadId) => {
+    Thread.create(title, content, req.user.id, image, (err, threadId) => {
         if (err) return res.status(500).json({ message: "Ошибка сервера" });
-        res.status(201).json({ id: threadId, title, content, user_id: req.user.id });
+        res.status(201).json({ id: threadId, title, content, image, user_id: req.user.id });
     });
 });
 
