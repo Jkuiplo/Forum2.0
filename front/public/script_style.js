@@ -2,7 +2,6 @@ document.getElementById("toggleSidebar").addEventListener("click", function () {
     document.querySelector(".leftbar").classList.toggle("hidden");
 });
 
-
 document.querySelectorAll(".menu-btn").forEach(button => {
     button.addEventListener("click", () => {
         let submenu = button.nextElementSibling;
@@ -41,3 +40,24 @@ const popupBtn = document.querySelector('.popup-btn');
       popup.classList.remove('active');
       overlay.classList.remove('active');
     });
+
+
+    const toggleMenuBtn = document.getElementById('profile-button');
+    const menu = document.getElementById('menu');
+    const themeSwitch = document.getElementById('themeSwitch');
+
+    toggleMenuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden-menu');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.menu-wrapper')) {
+        menu.classList.add('hidden-menu');
+      }
+    });
+
+    themeSwitch.addEventListener('click', () => {
+      themeSwitch.classList.toggle('on');
+      document.body.classList.toggle('dark');
+    });
+    

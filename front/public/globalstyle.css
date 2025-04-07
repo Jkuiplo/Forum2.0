@@ -122,12 +122,14 @@ h2 {
     height: 3rem;
     border-radius: 50%;
 }
-.addPOST{
-    
+
+.addPOST {
+
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
 }
+
 .main-container {
     display: flex;
     justify-content: center;
@@ -147,13 +149,14 @@ h2 {
     color: white;
     transition: transform 0.3s ease-in-out;
     z-index: 1;
+    transform: translateX(0);
     border-right: 1px black solid;
 }
 
 .leftbar.hidden {
     transform: translateX(-100%);
 }
-    
+
 .hashtagss {
     padding: 1rem;
 }
@@ -223,7 +226,7 @@ h2 {
     background: none;
     padding: 10px;
     gap: 10%;
-    
+
     /* Отступ между иконкой и текстом */
 }
 
@@ -316,9 +319,10 @@ input {
 
 
 
-.popup-btn{
+.popup-btn {
     all: unset;
 }
+
 .popup {
     position: fixed;
     top: 50%;
@@ -340,15 +344,15 @@ input {
     display: flex;
     flex-direction: column;
     gap: 20px;
-  }
+}
 
-  .popup.active {
+.popup.active {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
     pointer-events: auto;
-  }
+}
 
-  .overlay {
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -359,14 +363,14 @@ input {
     pointer-events: none;
     transition: opacity 0.3s ease;
     z-index: 5;
-  }
+}
 
-  .overlay.active {
+.overlay.active {
     opacity: 1;
     pointer-events: auto;
-  }
+}
 
-  .close-btn {
+.close-btn {
     top: 0;
     color: white;
     border: none;
@@ -374,28 +378,30 @@ input {
     cursor: pointer;
     background-color: transparent;
 
-  }
+}
 
-  .close-btn img {
+.close-btn img {
     width: 3rem;
     height: 3rem;
-  }
+}
 
-  .top-menu {
+.top-menu {
     display: flex;
     justify-content: space-between;
-  }
+}
 
-  .top-menu img {
+.top-menu img {
     width: 3rem;
     height: 3rem;
-  }
-  .upload-post img{
+}
+
+.upload-post img {
     width: 2rem;
     height: 2rem;
-  }
-  .upload-post{
-    
+}
+
+.upload-post {
+
     all: unset;
     padding: 0 2rem 0 2rem;
     display: flex;
@@ -406,15 +412,18 @@ input {
     height: 3rem;
     border-radius: 15px;
 
-  }
-  .upload-file-post {
+}
+
+.upload-file-post {
     display: none;
-  }
-  .bottom-menu{
+}
+
+.bottom-menu {
     display: flex;
     justify-content: space-between;
-  }
-  .upload-file-post-label{
+}
+
+.upload-file-post-label {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -423,23 +432,195 @@ input {
     border: 2px solid black;
     border-radius: 15px;
 
-  }
-  .upload-file-post-label img{
+}
+
+.upload-file-post-label img {
     height: 2rem;
     width: 2rem;
-  }
-  .post-title{
+}
+
+.post-title {
     border: 2px solid black;
-    border-radius:15px ;
+    border-radius: 15px;
     background-color: white;
     height: 2.5rem;
     padding-left: 1rem;
-  }
-  .post-content{
+}
+
+.post-content {
     border: 2px solid black;
-    border-radius:15px ;
+    border-radius: 15px;
     background-color: white;
     height: 8rem;
     padding-left: 1rem;
     padding-top: 0.5rem;
-  }
+}
+
+
+
+
+.menu-wrapper {
+    padding: 2rem;
+    position: relative;
+    display: inline-block;
+
+}
+
+#toggleMenuBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 12px;
+    background: #eee;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.menu {
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 0px 0px 15px 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    margin-top: 2rem;
+    right: 0;
+    background: white;
+    border-top:none ;
+    z-index: 10;
+    
+    right: 0px;
+}
+
+.hidden-menu {
+    display: none;
+}
+
+.menu-button:hover {
+    background: #f0f0f0;
+}
+
+.switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    /* чуть больше высота */
+    background: #eee;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    /* выравнивание по вертикали */
+    padding: 0.3rem;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.switch-circle {
+    width: 24px;
+    height: 24px;
+    background: violet;
+    border-radius: 50%;
+    transition: 0.3s;
+    border: 2px solid black;
+    position: relative;
+    border: 2px solid black;
+}
+
+.switch.on .switch-circle {
+    transform: translateX(30px);
+    background: #222;
+}
+
+.color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.dot-yellow {
+    background: yellow;
+}
+
+.dot-blue {
+    background: #477;
+}
+
+
+body.dark {
+    background: #222;
+    color: white;
+}
+
+body.dark .menu,
+body.dark .menu-button,
+body.dark .menu-exit,
+{
+background: #444;
+}
+
+body.dark .menu-button:hover,
+body.dark .menu-exit:hover {
+    background: #c0c0c0;
+}
+
+.menu-button {
+    border-radius: 1rem;
+    height: 3rem;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    font-size: 1.5rem;
+}
+
+.bottom-switch {
+    border: none;
+}
+
+.menu-exit {
+    border-radius: 1rem;
+    height: 4rem;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    font-size: 1.5rem;
+}
+
+.menu-exit img {
+    height: 25px;
+    margin-right: 10px;
+}
+
+.menu-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.theme-toggle {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.theme-toggle {
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+}
