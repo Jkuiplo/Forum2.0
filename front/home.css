@@ -1,0 +1,104 @@
+/*Создано бездарем под ником Алишер*/
+
+.image{
+    height: ;
+}
+
+/* Контейнер для тредов */
+#threads-container {
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Стили для каждого треда */
+.thread {
+    margin-top: 3rem;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Заголовок треда */
+.thread-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.thread-header h3 {
+    margin: 0;
+}
+
+/* Дата поста */
+.date {
+    font-size: 0.9em;
+    color: gray;
+}
+
+/* Контент треда */
+.thread-content {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Кнопки под постом */
+.thread-footer {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.thread-footer button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.thread-footer button:hover {
+    opacity: 0.7;
+}
+
+
+/**********************************************************************************************/
+
+
+@media (max-width: 768px) {
+    .leftbar {
+        position: fixed;
+        width: 220px;
+        z-index: 999;
+    }
+    .leftbar.show {
+        transform: translateX(0);
+    }
+    
+    header{
+        display: flex;
+    }
+    #names{
+        display: none;
+        justify-content: center;
+    }
+    .logo{
+        display: none;
+    }
+}
+.post {
+    margin-top: 10vh;
+    height: 25rem;
+    width: 50rem;
+    max-width: auto; 
+    border: 0.1rem solid black;
+}
+/* часть верхнего поста */
+.profile_on_post{
+    
+}   

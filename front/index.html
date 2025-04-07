@@ -1,6 +1,6 @@
 <html lang="ru">
     <head>
-        <title>AUI Forum</title>
+        <title>AIU Forum</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="globalstyle.css">
@@ -23,22 +23,9 @@
             </div>
             
             <span class="profile-on-header">
-                <h2 id="names">
-                        Name Namovich
-                </h2> <!-- для имени -->
-                <img class="PROFimg" src="img/profile.svg" id="progIMG">
-
+                <button class="signin" onclick="location.href='/public/login.html'">Войти</button>
+                <button class="login" onclick="location.href='/public/register.html'">Зарегестрироваться</button>
             </span>
-            <div style="display: none;" class="signin" id="signin">
-                <div style="display: none;" class="login" id="login">
-                    <h2>login</h2>
-                </div>
-                <div style="display: none;" class="register" id="register">
-                    <h2>
-                        register
-                    </h2>
-                </div>
-            </div>
 
         </header>
         <button id="toggleSidebar" class="toggle-btn"><img src="img/menu.svg"></button>
@@ -52,6 +39,7 @@
                         <textarea class="post-content" id="NewPost_content" placeholder="введите свой пост"></textarea>
                         <label for="NewPost_file" class="post_file_label" aria-placeholder="selectfile">вложите файл</label>
                         <input class="post_file" type="file" id="NewPost_file">
+                        <button class="button" id="postButton">POST</button>
                     </div>
                         
                 
@@ -95,27 +83,9 @@
                 </span>
                 </div>
             </div>
-                <div class="post">
-                    <span class="toppost">
-                        <div class="profile_on_post" id="profile_on_postID">
-                            <img src="" id="profile_on_postID">
-                        </div>
-                        <span id="date"> <!-- Дата -->
-
-                        </span>
-                    </span>
-                    <span class="middlepost">
-                        <span class="post_img">
-                            <img src="" id="imgPOST"> <!-- изображение для поста ID= "imgPOST"  -->
-                        </span>
-                    </span>
-                    <span class="bottompost">
-
-                    </span>
-                </div>
+            
         </div>
-        <script src="script_style.js">
-           
-        </script>
+        <script src="script_style.js"></script>
+        <script src="scripts.js"></script>
     </body>
 </html>

@@ -1,3 +1,49 @@
+/*созданное бездарем по имени Алишер*/
+.button {
+    margin-top: 1rem;
+    font-family: Helvetica;
+    display: block; /* Делаем блочным, чтобы он выглядел как input */
+    width: 12rem;
+    height: 2rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 2px solid #7700FF;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1rem; /* Центрирование текста по вертикали */
+    cursor: pointer;
+    color: #4c3a6e;
+
+    transition: background-color 0.1s ease; /* Добавим плавное изменение фона */
+}
+.button:active{
+    background-color: #0056b3; /* Изменим цвет фона при клике */
+}
+
+.login{
+    background-color: transparent;
+    height: 2rem;
+    width:fit-content;
+    border: 0.1rem solid black;
+    border-radius: 10px;
+    transition: background-color 0.2s ease-in-out;
+}
+.signin{
+    background-color: transparent;
+    height: 2rem;
+    width:fit-content;
+    border-radius: 10px;
+    transition: background-color 0.2s ease-in-out;
+    border: none;
+}
+.signin:hover,
+.login:hover{
+    color: #a195c2;
+    border-color:  #a195c2;
+}
+
+
 html body{
     overscroll-behavior: none;
 }

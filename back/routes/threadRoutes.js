@@ -13,7 +13,8 @@ router.post("/", authMiddleware, (req, res) => {
 
     Thread.create(title, content, req.user.id, (err, threadId) => {
         if (err) return res.status(500).json({ message: "Ошибка сервера" });
-        res.status(201).json({ id: threadId, title, content, user_id: req.user.id });
+        res.status(201).json({ success: true, id: threadId, title, content, user_id: req.user.id });
+
     });
 });
 
