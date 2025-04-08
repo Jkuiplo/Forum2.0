@@ -1,32 +1,75 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    width: 50rem;
+    max-width: auto;
+    border: 0.1rem solid black;
+}
+
+.post_content {
+    margin-left: 5rem;
+    width: 100%;
+    /* Занимает всю ширину контейнера */
+    aspect-ratio: 16 / 9;
+    /* Соотношение сторон 16:9 */
+    background: rgb(0, 0, 0);
+    /* Для наглядности */
+}
+
+.toppost {
+    display: flex;
+    background-color: aqua;
+    width: 100%;
+    height: auto;
+}
+
+.middlepost {
+    margin-left: 10%;
+    border: 0.1rem solid black;
+    width: 80%;
+    /* Занимает всю ширину контейнера */
+    aspect-ratio: 16 / 9;
+    /* Соотношение сторон 16:9 */
+    background: rgb(255, 255, 255);
+    /* Для наглядности */
+}
+
+.main_text_post {}
+
+/* часть верхнего поста */
+.profile_on_post {}
+
 @media (max-width: 768px) {
     .leftbar {
         position: fixed;
         width: 220px;
         z-index: 999;
     }
+
     .leftbar.show {
         transform: translateX(0);
     }
-    
-    header{
+
+    header {
         display: flex;
     }
-    #names{
+
+    #names {
         display: none;
         justify-content: center;
     }
-    .logo{
+
+    .logo {
         display: none;
     }
+
+    .post {
+        width: 80%;
+        /* Занимает всю ширину контейнера */
+        aspect-ratio: 16 / 9;
+        /* Соотношение сторон 16:9 */
+        background: rgb(255, 255, 255);
+        /* Для наглядности */
+    }
 }
-.post {
-    margin-top: 10vh;
-    height: 25rem;
-    width: 50rem;
-    max-width: auto; 
-    border: 0.1rem solid black;
-}
-/* часть верхнего поста */
-.profile_on_post{
-    
-}   
