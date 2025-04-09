@@ -4,8 +4,8 @@
     <title>AUI Forum</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="globalstyle.css">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="/public/globalstyle.css">
+    <link rel="stylesheet" href="/public/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -133,33 +133,7 @@
                 </span>
             </div>
         </div>
-        <div class="post">
-            <span class="toppost">
-                <div class="profile_on_post" id="profile_on_postID">
-                    <img src="" id="profile_on_postID">
-                </div>
-                <span id="date"> <!-- Дата -->
-
-                </span>
-                <span class="main_text_post">
-                    <span class="title_post">
-                        <h2></h2>
-                    </span>
-                    <span class="text_post_main">
-
-                    </span>
-                </span>
-            </span>
-            <span class="middlepost">
-                <span class="post_content">
-
-                    <img src="" id="CONT_POST"> <!-- изображение для поста ID= "imgPOST"  -->
-                </span>
-            </span>
-            <span class="bottompost">
-
-            </span>
-        </div>
+        <div id="posts-container"></div>
     </div>
     <div class="overlay" id="overlay"></div>
 
@@ -188,9 +162,10 @@
 
     
 
-    <script src="script_style.js">
-
-    </script>
+    <script src="/public/script_style.js"></script>
+    <script src="/src/displayPost.js"></script>
+    <script src="/src/Post.js"></script>
+    <script src="/src/userData.js"></script>
 </body>
 
 </html>

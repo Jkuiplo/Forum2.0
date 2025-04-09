@@ -7,6 +7,17 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', '/front/public/index.html'));
 });
 
+router.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', '/front/temp/login.html'));
+});
+
+router.get('/authorization', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', '/front/temp/auth.html'));
+});
+
+router.get('/logout', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', '/front/temp/logout.html'));
+})
 
 // Можно добавить другие страницы
 // router.get('/contact', (req, res) => {
