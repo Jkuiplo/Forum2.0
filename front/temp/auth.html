@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .auth-container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #2c7dfa;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #1a5fd0;
+    }
+    .google-btn {
+      background: white;
+      color: #444;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .google-btn img {
+      width: 20px;
+    }
+    .separator {
+      text-align: center;
+      margin: 15px 0;
+      color: #aaa;
+    }
+    .switch-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .switch-link a {
+      color: #2c7dfa;
+      text-decoration: none;
+    }
+    #alert {
+      color: red;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Регистрация</h2>
+
+    <form id="register-form">
+      <div id="alert"></div>
+      <input type="text" name="username" placeholder="Никнейм" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Пароль" required>
+      <input type="password" name="confirm" placeholder="Повторите пароль" required>
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <div class="separator">или</div>
+    
+    <button class="google-btn">
+      <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google"> Зарегистрироваться с Google
+    </button>
+
+    <div class="switch-link">
+      Уже есть аккаунт? <a href="/login">Войти</a>
+    </div>
+  </div>
+  <script src="/src/register.js"></script>
+</body>
+</html>

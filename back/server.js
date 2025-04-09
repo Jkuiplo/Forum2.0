@@ -6,7 +6,7 @@ const sqlite3 = require("sqlite3").verbose();
 const dotenv = require("dotenv");
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 dotenv.config();
 
