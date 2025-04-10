@@ -1,11 +1,19 @@
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    if (match) return match[2];
+    return null;  // Возвращаем null, если куки с таким именем нет
+}
+
 // Логика получения данных о пользователе
 document.addEventListener("DOMContentLoaded", () => {
-    const token = localStorage.getItem("token");
+    const token = getCookie('token');
     const profileContainer = document.querySelector(".profile-on-header");
 
+    console.log(token);
     if (token) {
+        console.log(token);
         // Делаем запрос к API для получения данных о пользователе
-        fetch("http://localhost:3000/api/auth/me", {
+        fetch("http://localhost:5000/api/auth/me", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token
@@ -14,12 +22,52 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if (data.username) {
+                console.log(data.username)
                 // Удаляем кнопки "Войти" и "Зарегистрироваться"
                 profileContainer.innerHTML = `
-                    <span class="profile-on-header">
-                        <h2 class="username" id="names">${data.username}</h2>
-                        <img src="${data.avatar || '/img/profile.svg'}" alt="Аватар" class="avatar" class="PROFimg">
+                  <button class="popup-btn">
+                <img class="addPOST" src="img/addpost.svg">
+            
+            </button>
+            
+            <h2 id="names">
+                ${data.username}
+            </h2> <!-- для имени -->
+            <div class="menu-wrapper">
+                
+            <button style="all: unset;" id="profile-button">
+                <img class="PROFimg" src="img/profile.svg" id="progIMG">
+            </button>
+                <div class="menu hidden-menu" id="menu">
+                    <div class="menu-button">
+                    <img src="img/profile-ico.svg">
+                    <span>my profile</span>
+                    </div>
+            
+                    <div class="menu-button">
+                    <img src="img/notifacion-ico.svg">
+                    <span>notification</span>
+                    </div>
+            
+                    <span class="menu-bottom bottom-switch">
+                    <div class="theme-toggle">
+                        <img src="img/sun-ico.svg">
+                        <div class="switch" id="themeSwitch">
+                        <div class="switch-circle"></div>
+                        </div>
+                        <img src="img/moon-ico.svg">
+                    </div>
+            
+            
+                    <div class="menu-exit">
+                        <img src="img/door-ico.svg">
+                        <span>exit</span>
+                    </div>
                     </span>
+            
+            
+                </div>
+            </div>
                 `;
             }
         })
@@ -32,14 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    function getCookie(name) {
-        const matches = document.cookie.match(new RegExp(
-            "(?:^|; )" + name.replace(/([.$?*|{}()[]\\\/+^])/g, '\\$1') + "=([^;]*)"
-        ));
-        return matches ? decodeURIComponent(matches[1]) : undefined;
-    }
-
-    const accessToken = getCookie('accessToken');
+    const accessToken = getCookie('token');
     const menu = document.getElementById('menu');
     const nameBlock = document.getElementById('names');
 
