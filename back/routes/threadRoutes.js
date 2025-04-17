@@ -21,7 +21,8 @@ const upload = multer({ storage: storage });
 // 📌 Создать тред с изображением
 router.post("/", authMiddleware, upload.single('image'), (req, res) => {
     const { title, content } = req.body;
-    const image = req.file ? req.file.path : null;
+    const image = req.file ? `uploads/${req.file.filename}` : null;
+    
 
     if (!title || !content) {
         return res.status(400).json({ message: "Введите заголовок и текст" });

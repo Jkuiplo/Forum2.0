@@ -1,3 +1,15 @@
+const loginBtn = menu?.querySelectorAll('.menu-button')[0];
+const regBtn = menu?.querySelectorAll('.menu-button')[1];
+
+loginBtn.addEventListener('click', () => {
+  window.location.href = '/login';
+});
+regBtn.addEventListener('click', () => {
+  window.location.href = '/authorization';
+});
+
+/*
+
 const http = require('http');
 
 const hostname = '127.0.0.1';
@@ -30,4 +42,4 @@ fetch("/api/threads")
             document.getElementById("names").innerText = user.username;
         }
     })
-    .catch(() => console.log("Не авторизован"));
+    .catch(() => console.log("Не авторизован"));*/

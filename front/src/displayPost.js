@@ -93,10 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
 						<a id="like_num">0<a>
 						<img src="/img/thumb_down.svg">
 						<a id="dislike_num">0<a>
+						<img src="/img/comment.svg">
+						<a id="dislike_num">0<a>
 					</span>
 					
 					<span id="date">${readableTime}</span>
-					<!-- кнопки и т.п. -->
 				</span>
 				`;
 				

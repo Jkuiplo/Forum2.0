@@ -47,7 +47,13 @@ const passport = require("./routes/googleAuth");
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+app.get("/auth/google",
+	passport.authenticate("google", {
+	  scope: ["profile", "email"],
+	  prompt: "select_account", // <-- вот сюда!
+	})
+      );
+      
 app.get("/routes/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 app.get(

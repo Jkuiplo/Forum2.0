@@ -1,17 +1,15 @@
 function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     if (match) return match[2];
-    return null;  // Возвращаем null, если куки с таким именем нет
+    return null;  
 }
-
-// Логика получения данных о пользователе
 document.addEventListener("DOMContentLoaded", () => {
     const token = getCookie('token');
     const profileContainer = document.querySelector(".profile-on-header");
 
-    console.log(token);
+
     if (token) {
-        console.log(token);
+        console.log('Есть токен')
         // Делаем запрос к API для получения данных о пользователе
         fetch("http://localhost:5000/api/auth/me", {
             method: "GET",
@@ -23,9 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             if (data.username) {
                 console.log(data.username)
-                // Удаляем кнопки "Войти" и "Зарегистрироваться"
                 profileContainer.innerHTML = `
-                  <button class="popup-btn">
+            <button class="popup-btn">
                 <img class="addPOST" src="img/addpost.svg">
             
             </button>
@@ -69,6 +66,55 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
                 `;
+
+                const popupBtn = document.querySelector('.popup-btn');
+                const popup = document.getElementById('popup');
+                const overlay = document.getElementById('overlay');
+                const closeBtn = document.getElementById('closePopup');
+                const exitBtn = document.getElementById('.menu-exit'); 
+
+                popupBtn.addEventListener('click', () => {
+                popup.classList.add('active');
+                overlay.classList.add('active');
+                });
+
+                closeBtn.addEventListener('click', () => {
+                popup.classList.remove('active');
+                overlay.classList.remove('active');
+                });
+
+                overlay.addEventListener('click', () => {
+                popup.classList.remove('active');
+                overlay.classList.remove('active');
+                });
+
+
+                const toggleMenuBtn = document.getElementById('profile-button');
+                const menu = document.getElementById('menu');
+                 const themeSwitch = document.getElementById('themeSwitch');
+
+                 toggleMenuBtn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden-menu');
+                  });
+
+                  document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.menu-wrapper')) {
+                      menu.classList.add('hidden-menu');
+                    }
+                  });
+
+                  themeSwitch.addEventListener('click', () => {
+                    themeSwitch.classList.toggle('on');
+                    document.body.classList.toggle('dark');
+                  });
+                  
+                  exitBtn.addEventListener('click', () => {
+                    window.location.href = '/logout';
+                  });
+                
+
+
+
             }
         })
         .catch(error => {
@@ -79,7 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
+
+/*document.addEventListener('DOMContentLoaded', () => {
     const accessToken = getCookie('token');
     const menu = document.getElementById('menu');
     const nameBlock = document.getElementById('names');
@@ -114,3 +161,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+*/

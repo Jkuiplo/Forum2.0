@@ -7,7 +7,7 @@
 	  // При переходе на страницу logout удаляем токен из куки
 	  if (window.location.pathname === "/logout") {
 	    deleteCookie("token");
-	    localStorage.removeItem('token');
+	    deleteCookie("connect.sid");
 	    window.location.href = "/";  // Перенаправляем на главную страницу после выхода
 	  }
 </script>

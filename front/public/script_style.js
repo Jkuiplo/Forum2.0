@@ -20,7 +20,7 @@ document.querySelectorAll(".menu-btn").forEach(button => {
         }
     });
 });
-
+/*
 const popupBtn = document.querySelector('.popup-btn');
     const popup = document.getElementById('popup');
     const overlay = document.getElementById('overlay');
@@ -41,7 +41,7 @@ const popupBtn = document.querySelector('.popup-btn');
       overlay.classList.remove('active');
     });
 
-
+*/
     const toggleMenuBtn = document.getElementById('profile-button');
     const menu = document.getElementById('menu');
     const themeSwitch = document.getElementById('themeSwitch');
@@ -55,9 +55,9 @@ const popupBtn = document.querySelector('.popup-btn');
         menu.classList.add('hidden-menu');
       }
     });
-
+/*
     themeSwitch.addEventListener('click', () => {
       themeSwitch.classList.toggle('on');
       document.body.classList.toggle('dark');
     });
-    
+  */ 
