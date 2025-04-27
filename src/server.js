@@ -1,5 +1,5 @@
 const express = require("express");
-const { PORT, staticPaths } = require("./config/serverConfig");
+const PORT = require(process.env.PORT || 3000);
 const passport = require("./config/passport");
 const applyMiddleware = require("./middleware/indexMiddleware");
 const applyRoutes = require("./routes");
