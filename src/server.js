@@ -1,8 +1,9 @@
 const express = require("express");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const passport = require("./config/passport");
 const applyMiddleware = require("./middleware/indexMiddleware");
 const applyRoutes = require("./routes");
+const applyStatic = require("./routes/static");
 
 const app = express();
 
@@ -12,11 +13,8 @@ applyMiddleware(app);
 // Apply routes
 applyRoutes(app);
 
-// Static files
-app.use("/public", express.static(staticPaths.public));
-app.use("/src", express.static(staticPaths.src));
-app.use("/img", express.static(staticPaths.img));
-app.use("/uploads", express.static(staticPaths.uploads));
+applyStatic(app);
+
 
 // Google Auth
 app.use(passport.initialize());
