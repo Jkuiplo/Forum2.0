@@ -1,0 +1,14 @@
+<script>
+	  // Функция для удаления куки по имени
+	  function deleteCookie(name) {
+	    document.cookie = `${name}=; path=/; max-age=0; samesite=strict;`;
+	  }
+	
+	  // При переходе на страницу logout удаляем токен из куки
+	  if (window.location.pathname === "/logout") {
+	    deleteCookie("token");
+	    deleteCookie("connect.sid");
+	    window.location.href = "/";  // Перенаправляем на главную страницу после выхода
+	  }
+</script>
+	

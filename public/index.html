@@ -1,0 +1,167 @@
+<html lang="ru">
+
+<head>
+    <title>AIU Forum</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/globalstyle.css">
+    <link rel="stylesheet" href="/public/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <span class="firstLOGO">AIU</span><span class="SecondLOGO">forum</span>
+        </h1>
+        <div class="search-wrapper">
+            <div class="search-container">
+                <span class="search-icon">
+                    <img src="img/search.svg" alt="Search">
+                </span>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+
+        <span class="profile-on-header">
+            <!--
+            <h2 id="names">
+                Name Namovich
+            </h2> 
+            -->
+            <div class="menu-wrapper">
+
+                <button style="all: unset;" id="profile-button">
+                    <img class="PROFimg" src="img/profile.svg" id="progIMG">
+                </button>
+                <div class="menu hidden-menu" id="menu">
+                    <div class="menu-button">
+                        <span>Войти</span>
+                    </div>
+                    <div class="menu-button">
+                        <span>Зарегестрироваться</span>
+                    </div>
+                    <!--
+                    <div class="menu-button">
+                    <img src="img/profile-ico.svg">
+                    <span>my profile</span>
+                    </div>
+            
+                    <div class="menu-button">
+                    <img src="img/notifacion-ico.svg">
+                    <span>notification</span>
+                    </div>
+            
+                    <span class="menu-bottom bottom-switch">
+                    <div class="theme-toggle">
+                        <img src="img/sun-ico.svg">
+                        <div class="switch" id="themeSwitch">
+                        <div class="switch-circle"></div>
+                        </div>
+                        <img src="img/moon-ico.svg">
+                    </div>
+            
+            
+                    <div class="menu-exit">
+                        <img src="img/door-ico.svg">
+                        <span>exit</span>
+                    </div>
+                    </span>
+                </div>
+            </div> -->
+
+        </span>
+        <div style="display: none;" class="signin" id="signin">
+            <div style="display: none;" class="login" id="login">
+                <h2>login</h2>
+            </div>
+            <div style="display: none;" class="register" id="register">
+                <h2>
+                    register
+                </h2>
+            </div>
+        </div>
+
+    </header>
+    <button id="toggleSidebar" class="toggle-btn"><img src="img/menu.svg"></button>
+    <div class="main-container">
+        <div class="leftbar hidden">
+
+            <div class="hashtagss">
+                </span>
+                <span>
+                    <button class="menu-btn"> <span> <img src="img/hashtag.svg"> </span> popular <span
+                            class="arrow"><img src="img/Line_noneact.svg"> </span></button>
+                    <ul class="submenu">
+                        <li>programs</li>
+                        <li>teachers</li>
+                        <li>computers</li>
+                        <li>math</li>
+                    </ul>
+                </span>
+                <span>
+                    <button class="menu-btn"> <span> <img src="img/hashtag.svg"> </span> conspect <span
+                            class="arrow"><img src="img/Line_noneact.svg"> </span></button>
+                    <ul class="submenu">
+                        <li>programs</li>
+                        <li>teachers</li>
+                        <li>computers</li>
+                        <li>math</li>
+                    </ul>
+                </span>
+                <span>
+                    <button class="menu-btn"> <span> <img src="img/hashtag.svg"> </span> meme <span class="arrow"><img
+                                src="img/Line_noneact.svg"> </span></button>
+                    <ul class="submenu">
+                        <li>programs</li>
+                        <li>teachers</li>
+                        <li>computers</li>
+                        <li>math</li>
+                    </ul>
+                </span>
+                <span>
+                    <button class="menu-btn"> <span> <img src="img/hashtag.svg"> </span> others <span class="arrow"><img
+                                src="img/Line_noneact.svg"> </span></button>
+                    <ul class="submenu">
+                        <li>programs</li>
+                        <li>teachers</li>
+                        <li>computers</li>
+                        <li>math</li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <div id="posts-container"></div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="popup">
+        <div class="top-menu">
+            <img src="img/top-logo.svg">
+            <button class="close-btn" id="closePopup"><img src="img/Frame 35.svg"></button>
+
+        </div>
+        <input type="text" class="post-title" id="post_title" placeholder="| введите заголовок поста">
+        <textarea class="post-content" id="post_content" placeholder="| введите текст поста"></textarea>
+        <div class="bottom-menu">
+            <label for="upload_file_post" class="upload-file-post-label">
+                <img src="img/file-upload-post.svg">
+            </label>
+            <input type="file" class="upload-file-post" id="upload_file_post">
+
+            <button class="upload-post" id="upload_post">
+                <p>
+                    upload
+                </p>
+                <img src="img/post-upload-button.svg">
+            </button>
+        </div>
+    </div>
+
+
+    <script src="/public/scripts.js"></script>
+    <script src="/public/script_style.js"></script>
+</body>
+
+</html>

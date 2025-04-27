@@ -1,0 +1,123 @@
+body {
+  font-family: sans-serif;
+  background: #f9f9f9;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.profile-container {
+  margin: 50px auto 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 1040px;
+}
+
+.profile-container h2 {
+  padding: 40px 40px;
+}
+
+.profile {
+  display: flex;
+  gap: 10px;
+  padding: 40px;
+}
+
+.profile img {
+  border-radius: 5px;
+  width: 300px;
+  height: 300px;
+}
+
+.profile-contact {
+  padding: 20px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+#profile-name {
+  font-size: 24px;
+}
+
+/* ---------section---------- */
+
+.sections {
+  width: 100%;
+  background: #efefef;
+  margin-top: 50px;
+  /* border-top-left-radius: 30px; */
+  /* border-top-right-radius: 30px; */
+}
+
+.sections-menu {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.section-menu-selected {
+  background: #000;
+  color: white;
+}
+
+a {
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  transition: 0.5s;
+  padding: 20px;
+  text-align: center;
+  /* border-radius: 15px; */
+}
+
+a:hover {
+  background: #00000054;
+  color: white;
+}
+
+.section-wrapper {
+  width: 80%;
+  margin: 100px auto;
+}
+
+/* ---------section-wrapper---------- */
+
+.profile-post {
+  display: flex;
+  border-radius: 20px;
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border: none;
+}
+
+.profile-post .avatar {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+}
+
+.profile-post span {
+  display: flex;
+  align-items: center;
+  float: right;
+}
+
+.profile-post .info {
+  width: 100%;
+}
+
+.profile-post h3 {
+  margin-bottom: 0;
+}
+
+.profile-post p {
+  margin-top: 5px;
+}
+
+.profile-post span img {
+  margin: 5px;
+}

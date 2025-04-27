@@ -1,0 +1,79 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+    width: 50rem;
+    max-width: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+
+.post_content {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #302b2b;
+    /* для наглядности */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_content img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.toppost {
+    display: flex;
+    margin-left: 2.5%;
+    width: 100%;
+    height: auto;
+}
+
+.middlepost {
+    margin-left: 2.5%;
+    border: 0.1rem solid black;
+    width: 95%;
+    aspect-ratio: 16 / 9;
+    background: rgb(255, 255, 255);
+}
+
+.bottompost {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.main_text_post {}
+
+/* часть верхнего поста */
+.profile_on_post {}
+
+@media (max-width: 768px) {
+    .leftbar {
+        position: fixed;
+        width: 220px;
+        z-index: 999;
+    }
+
+    .leftbar.show {
+        transform: translateX(0);
+    }
+
+    header {
+        display: flex;
+    }
+
+    #names {
+        display: none;
+        justify-content: center;
+    }
+
+    .logo {
+        display: none;
+    }
+}
