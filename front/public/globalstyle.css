@@ -96,7 +96,7 @@ header {
 .profile-on-header {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 1rem;
     width: auto;
     white-space: nowrap;
@@ -318,12 +318,15 @@ input {
 }
 
 
-
-
 .popup-btn {
+    display: block;
     all: unset;
 }
-
+.popup-btn-wrapper {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+}
 .popup {
     position: fixed;
     top: 50%;
@@ -490,19 +493,21 @@ input {
     flex-direction: column;
     gap: 15px;
     margin-right: 0;
-
-    position: absolute;
-    margin-top: 1vh;
+    margin-top:330
+    ;
     right: 0;
+    position: absolute;
     background: white;
     border-top:none ;
     z-index: 10;
-    
     right: 0px;
 }
-
-.hidden-menu {
+.menu{
     display: none;
+}
+
+.menu.hidden-menu {
+    display: flex;
 }
 
 .menu-button:hover {
@@ -626,9 +631,6 @@ body.dark .menu-exit:hover {
     align-items: center;
     justify-content: space-between;
     border: 1px solid black;
-}
-.profile-on-header{
-    display: none;
 }
 
 .register{

@@ -27,29 +27,28 @@
             </div>
         </div>
 
-        <span class="profile-on-header">
+        <span class="profile-on-header" style="display: none;">
+          
+          <button class="popup-btn">
+              <img class="addPOST" src="img/addpost.svg">
+          
+          </button>
+          
             
-            
-            
-            <span style="display:none ;">
-                <button class="popup-btn">
-                    <img class="addPOST" src="img/addpost.svg">
+            <span class="profile-on-the-header">
                 
-                </button>
                 
                 <h2 id="names">
                     Name Namovich
                 </h2> <!-- для имени -->
-                <div class="menu-wrapper">
-                </div>
 
             </span>
 
              
-            <button style="all: unset;" id="profile-button">
+            <button  id="profile-button">
                 <img class="PROFimg" src="img/profile.svg" id="progIMG">
             </button>
-                <div class="menu hidden-menu" id="menu">
+                <div class="menu" id="menu">
                     <div class="menu-button">
                     <img src="img/profile-ico.svg">
                     <span>my profile</span>
@@ -109,8 +108,8 @@
         <span class="input-for-login">
           
           <span class="input-for-login-email-password">
-            <input type="email" placeholder="| login">
-            <input type="password" placeholder="| password">
+            <input type="email" placeholder="| Login">
+            <input type="password" placeholder="| Password">
           </span>
           <span class="login-buttons">
             <button>
@@ -140,10 +139,7 @@
       
 
     </div>
-          <!-- REGISTER-->
-
-      
-        
+          <!-- REGISTER--> 
     <div class="register-overlay" id="registerOverlay" onclick="handleRegisterOverlayClick(event)">
       <div class="register-modal" id="registerModal">
         <div class="register-top-menu">
@@ -154,9 +150,9 @@
         </div>
     
         <div class="register-input-group">
-          <input type="email" placeholder="Email" id="registerEmail">
-          <input type="text" placeholder="Username" id="registerUsername">
-          <input type="password" placeholder="Password" id="registerPassword">
+          <input type="email" placeholder="| Email" id="registerEmail">
+          <input type="text" placeholder="| Username" id="registerUsername">
+          <input type="password" placeholder="| Password" id="registerPassword">
           
           <div class="register-buttons">
             <button class="register-btn" id="googleRegisterBtn">
