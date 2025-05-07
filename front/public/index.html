@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="home.css">
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jua&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -28,16 +31,21 @@
             
             
             
-            <button class="popup-btn">
-                <img class="addPOST" src="img/addpost.svg">
-            
-            </button>
-            
-            <h2 id="names">
-                Name Namovich
-            </h2> <!-- для имени -->
-            <div class="menu-wrapper">
+            <span style="display:none ;">
+                <button class="popup-btn">
+                    <img class="addPOST" src="img/addpost.svg">
                 
+                </button>
+                
+                <h2 id="names">
+                    Name Namovich
+                </h2> <!-- для имени -->
+                <div class="menu-wrapper">
+                </div>
+
+            </span>
+
+             
             <button style="all: unset;" id="profile-button">
                 <img class="PROFimg" src="img/profile.svg" id="progIMG">
             </button>
@@ -70,21 +78,104 @@
             
             
                 </div>
-            </div>
+            
 
         </span>
-        <div style="display: none;" class="signin" id="signin">
-            <div style="display: none;" class="login" id="login">
-                <h2>login</h2>
-            </div>
-            <div style="display: none;" class="register" id="register">
-                <h2>
-                    register
-                </h2>
-            </div>
-        </div>
+        <span class="registers">
+            <button class="register register-on-head" id="register_on_head" >
+               register
+            </button>
+            <button class="register login-on-head" id="login_on_head">
+               login
+            </button>
+       </span>  
+
+
 
     </header>
+    
+      <!-- LOGIN-->
+
+    <div class="overlay" id="modalOverlay" onclick="handleOverlayClick(event)" style="display: none;">
+      <div class="modal" id="modalWindow">
+        <span class="top-menu-onlogin">
+          <img src="img/top-logo.svg">
+    
+          <button id="close_btn_login">
+            <img src="img/Frame 35.svg">
+          </button>
+        </span>
+    
+        <span class="input-for-login">
+          
+          <span class="input-for-login-email-password">
+            <input type="email" placeholder="| login">
+            <input type="password" placeholder="| password">
+          </span>
+          <span class="login-buttons">
+            <button>
+              <img src="img/google-logo-icon-gsuite-hd-701751694791470gzbayltphh.png">
+              <p>
+                login with a google
+              </p>
+            </button>
+            <button class="login-button-ico">
+              <p>
+                login
+              </p>
+              <img src="img/post-upload-button.svg" class="">
+              
+            </button>      
+            
+          </span>
+          <a href="#" id="register_swapper">
+            
+              no account? register
+            
+          </a>  
+        </span>
+        
+    
+      </div>
+      
+
+    </div>
+          <!-- REGISTER-->
+
+      
+        
+    <div class="register-overlay" id="registerOverlay" onclick="handleRegisterOverlayClick(event)">
+      <div class="register-modal" id="registerModal">
+        <div class="register-top-menu">
+          <img src="img/top-logo.svg" alt="AIU Forum Logo">
+          <button class="register-close-btn" id="registerCloseBtn">
+            <img src="img/Frame 35.svg" alt="Close">
+          </button>
+        </div>
+    
+        <div class="register-input-group">
+          <input type="email" placeholder="Email" id="registerEmail">
+          <input type="text" placeholder="Username" id="registerUsername">
+          <input type="password" placeholder="Password" id="registerPassword">
+          
+          <div class="register-buttons">
+            <button class="register-btn" id="googleRegisterBtn">
+              <img src="img/google-logo-icon-gsuite-hd-701751694791470gzbayltphh.png" alt="Google">
+              <span>Register with Google</span>
+            </button>
+            <button class="register-btn" id="submitRegisterBtn">
+              <span>Register</span>
+              <img src="img/post-upload-button.svg" alt="Submit">
+            </button>
+          </div>
+        </div>
+    
+        <a href="#" class="register-switch-link" id="loginSwitchLink">
+          Already have an account? Login
+        </a>
+      </div>
+    </div>
+    
     <button id="toggleSidebar" class="toggle-btn"><img src="img/menu.svg"></button>
     <div class="main-container">
         <div class="leftbar hidden">
@@ -161,7 +252,7 @@
             </span>
         </div>
     </div>
-    <div class="overlay" id="overlay"></div>
+    <div class="overlay" id="overlay-popup"></div>
 
     <div class="popup" id="popup">
       <div class="top-menu">
