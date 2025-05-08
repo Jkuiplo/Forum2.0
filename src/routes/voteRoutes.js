@@ -3,11 +3,10 @@ const router = express.Router();
 const voteController = require('../controllers/voteController');
 const authMiddleware = require("../middleware/authMiddleware");
 
-
-// POST /api/vote/thread
+// POST /api/votes/thread
 router.post('/thread', authMiddleware, voteController.voteOnThread);
 
-// POST /api/vote/comment
+// POST /api/votes/comment
 router.post('/comment', authMiddleware, voteController.voteOnComment);
 
-module.exports = router;
+module.exports = router;	

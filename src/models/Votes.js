@@ -1,83 +1,48 @@
 const db = require('../database');
 
-
-async function addVote({ userId, threadId = null, commentId = null, vote }) {
-
-	const existing = await db.prepare(`
-		SELECT * FROM votes
-		WHERE FK_users_id = ?
-		  AND (
-		    (FK_thread_id IS NOT NULL AND FK_thread_id = ? AND FK_comment_id IS NULL)
-		    OR
-		    (FK_comment_id IS NOT NULL AND FK_comment_id = ? AND FK_thread_id IS NULL)
-		  )
-	      `).get(userId, threadId, commentId);
-
-	if (existing) {
-		if (existing.vote === vote) {
-			db.prepare(`
-					DELETE FROM votes
-					WHERE id = ?
-					`).run(existing.id);
-			return { updatedVote: 0 };
-		} else {
-			db.prepare(`
-					UPDATE votes
-					SET vote = ?
-					WHERE id = ?
-					`).run(vote, existing.id);
-			return { updatedVote: vote };
-		}
+db.run(`
+	CREATE TABLE IF NOT EXISTS votes (
+	    id INTEGER PRIMARY KEY AUTOINCREMENT,
+	    title TEXT NOT NULL,
+	    content TEXT NOT NULL,
+	    user_id INTEGER NOT NULL,
+	    image TEXT,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+	)
+    `, (err) => {
+	if (err) {
+		console.error('Ошибка при создании таблицы votes:', err.message);
 	} else {
-		db.prepare(`
-				INSERT INTO votes (vote, FK_users_id, FK_thread_id, FK_comment_id)
-				VALUES (?, ?, ?, ?)
-				`).run(vote, userId, threadId, commentId);
-		return { updatedVote: vote };
+		console.log('✅ Таблица votes готова');
 	}
-}
+});
 
-function getTotalVotes({ threadId = null, commentId = null }) {
-	const result = db.prepare(`
-		SELECT SUM(vote) as total
-		FROM votes
-		WHERE FK_thread_id IS ? AND FK_comment_id IS ?
-		`).get(threadId, commentId);
+const Votes = {
+	findVote: (userId, threadId, callback) => {
+		db.get(`SELECT * FROM votes WHERE FK_users_id = ? AND FK_thread_id = ?`,
+			[userId, threadId], callback
+		);
+	},
+	addVote: (userId, threadId, vote, callback) => {
+		db.run(`INSERT INTO votes (vote, FK_users_id, FK_thread_id) VALUES (?, ?, ?)`,
+			[vote, userId, threadId], function (err) {
+				callback(err, this?.lastID)
+			});
+	},
+	deleteVote: (userId, threadId, callback) => {
+		db.run(`DELETE FROM votes WHERE FK_users_id = ?  AND FK_thread_id = ?`,
+			[userId, threadId], callback
+		);
+	},
+	getTotalVotes: (threadId, callback) => {
+		db.all(`SELECT SUM(vote) as totalVotes FROM votes WHERE FK_thread_id = ?`,
+			[threadId], callback
+		);
+	},
 
-	return result.total || 0;
-}
+};
 
-module.exports = {
-	addVote,
-	getTotalVotes
-}; function addVote({ userId, threadId = null, commentId = null, vote }) {
-	let existing;
 
-	if (threadId !== null) {
-		existing = db.prepare(`
-			SELECT * FROM votes
-			WHERE FK_users_id = ? AND FK_thread_id = ? AND FK_comment_id IS NULL
-		`).get(userId, threadId);
-	} else if (commentId !== null) {
-		existing = db.prepare(`
-			SELECT * FROM votes
-			WHERE FK_users_id = ? AND FK_comment_id = ? AND FK_thread_id IS NULL
-		`).get(userId, commentId);
-	}
 
-	if (existing) {
-		if (existing.vote === vote) {
-			db.prepare(`DELETE FROM votes WHERE id = ?`).run(existing.id);
-			return { updatedVote: 0 };
-		} else {
-			db.prepare(`UPDATE votes SET vote = ? WHERE id = ?`).run(vote, existing.id);
-			return { updatedVote: vote };
-		}
-	} else {
-		db.prepare(`
-			INSERT INTO votes (vote, FK_users_id, FK_thread_id, FK_comment_id)
-			VALUES (?, ?, ?, ?)
-		`).run(vote, userId, threadId, commentId);
-		return { updatedVote: vote };
-	}
-}
+module.exports = Votes;

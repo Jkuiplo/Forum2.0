@@ -1,60 +1,111 @@
 const Votes = require('../models/Votes');
 
-async function voteOnThread(req, res) {
-	const { threadId } = req.body;
-	const vote = parseInt(req.body.vote);
+function voteOnThread(req, res) {
+	const { threadId, vote } = req.body;
 	const userId = req.user.id;
 
-	if (![1, -1].includes(vote)) {
-		return res.status(400).json({ error: 'Invalid vote val' });
+	if (![1, -1].includes(parseInt(vote))) {
+		return res.status(400).json({ message: 'Invalid vote value' });
 	}
 
-	try {
-		const result = await Votes.addVote({
-			userId,
-			threadId,
-			vote
-		});
-		const totalVotes = await Votes.getTotalVotes({ threadId });
+	// Check if the user has already voted
+	Votes.findVote(userId, threadId, (err, existingVote) => {
+		if (err) {
+			console.error('Error checking existing vote:', err);
+			return res.status(500).json({ message: 'Server error' });
+		}
 
-		res.json({
-			message: 'Vote updated',
-			vote: result.updatedVote,
-			totalVotes
-		});
-	} catch (err) {
-		console.error(err);
-		res.status(500).json({ error: 'ЧТО НЕ ТАК ТО' });
-	}
+		if (existingVote) {
+			if (existingVote.vote === vote) {
+				// If the vote is the same, remove it
+				Votes.deleteVote(userId, threadId, (err) => {
+					if (err) {
+						console.error('Error deleting vote:', err);
+						return res.status(500).json({ message: 'Server error' });
+					}
+
+					Votes.getTotalVotes(threadId, (err, result) => {
+						if (err) {
+							console.error('Error fetching total votes:', err);
+							return res.status(500).json({ message: 'Server error' });
+						}
+
+						const totalVotes = result[0]?.totalVotes || 0;
+						return res.status(200).json({ message: 'Vote removed', totalVotes });
+					});
+				});
+			} else {
+				// If the vote is opposite, update it
+				Votes.deleteVote(userId, threadId, (err) => {
+					if (err) {
+						console.error('Error deleting opposite vote:', err);
+						return res.status(500).json({ message: 'Server error' });
+					}
+
+					Votes.addVote(userId, threadId, parseInt(vote), (err, voteId) => {
+						if (err) {
+							console.error('Error adding vote:', err);
+							return res.status(500).json({ message: 'Server error' });
+						}
+
+						Votes.getTotalVotes(threadId, (err, result) => {
+							if (err) {
+								console.error('Error fetching total votes:', err);
+								return res.status(500).json({ message: 'Server error' });
+							}
+
+							const totalVotes = result[0]?.totalVotes || 0;
+							return res.status(201).json({ message: 'Vote updated', voteId, totalVotes });
+						});
+					});
+				});
+			}
+		} else {
+			// If no vote exists, add a new one
+			Votes.addVote(userId, threadId, parseInt(vote), (err, voteId) => {
+				if (err) {
+					console.error('Error adding vote:', err);
+					return res.status(500).json({ message: 'Server error' });
+				}
+
+				Votes.getTotalVotes(threadId, (err, result) => {
+					if (err) {
+						console.error('Error fetching total votes:', err);
+						return res.status(500).json({ message: 'Server error' });
+					}
+
+					const totalVotes = result[0]?.totalVotes || 0;
+					return res.status(201).json({ message: 'Vote added', voteId, totalVotes });
+				});
+			});
+		}
+	});
 }
 
-async function voteOnComment(req, res) {
-	const { commentId } = req.body;
-	const vote = parseInt(req.body.vote);
+function voteOnComment(req, res) {
+	const { commentId, vote } = req.body;
 	const userId = req.user.id;
 
-	if (![1, -1].includes(vote)) {
-		return res.status(400).json({ error: 'Invalid vote value' });
+	if (![1, -1].includes(parseInt(vote))) {
+		return res.status(400).json({ message: 'Invalid vote value' });
 	}
 
-	try {
-		const result = await Votes.addVote({
-			userId,
-			commentId,
-			vote
-		});
+	Votes.addVote(userId, null, parseInt(vote), (err, voteId) => {
+		if (err) {
+			console.error('Error adding vote:', err);
+			return res.status(500).json({ message: 'Server error' });
+		}
 
-		const totalVotes = await Votes.getTotalVotes({ commentId });
+		Votes.getTotalVotes(commentId, (err, result) => {
+			if (err) {
+				console.error('Error fetching total votes:', err);
+				return res.status(500).json({ message: 'Server error' });
+			}
 
-		res.json({
-			message: 'Vote updated',
-			vote: result.updatedVote,
-			totalVotes
+			const totalVotes = result[0]?.totalVotes || 0;
+			res.status(201).json({ message: 'Vote updated', voteId, totalVotes });
 		});
-	} catch (err) {
-		console.error(err);
-		res.status(500).json({ error: 'что то не так с лайками...' });
-	}
+	});
 }
 
 module.exports = {

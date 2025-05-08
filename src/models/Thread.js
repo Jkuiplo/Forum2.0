@@ -20,7 +20,7 @@ db.run(`
 
 const Thread = {
     create: (title, content, user_id, image, callback) => {
-        db.run(`INSERT INTO threads (title, content, user_id, image) VALUES (?, ?, ?, ?)`, 
+        db.run(`INSERT INTO threads (title, content, user_id, image) VALUES (?, ?, ?, ?)`,
             [title, content, user_id, image], function (err) {
                 callback(err, this?.lastID);
             }
@@ -28,7 +28,15 @@ const Thread = {
     },
 
     getAll: (callback) => {
-        db.all(`SELECT * FROM threads ORDER BY created_at DESC`, callback);
+        db.all(`SELECT 
+                t.*, 
+                v.vote, 
+                COUNT(c.id) AS comment_count
+            FROM threads t
+            LEFT JOIN votes v ON t.id = v.FK_thread_id
+            LEFT JOIN comments c ON t.id = c.FK_thread_id
+            GROUP BY t.id, v.vote;
+            ORDER BY t.created_at DESC;`, callback);
     },
 
     getById: (id, callback) => {
@@ -36,7 +44,7 @@ const Thread = {
     },
 
     update: (id, title, content, image, callback) => {
-        db.run(`UPDATE threads SET title = ?, content = ?, image = ? WHERE id = ?`, 
+        db.run(`UPDATE threads SET title = ?, content = ?, image = ? WHERE id = ?`,
             [title, content, image, id], callback);
     },
 

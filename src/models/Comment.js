@@ -4,7 +4,7 @@ const db = new sqlite3.Database("./database.db");
 const Comment = {
     // 📌 Создать комментарий
     create: (threadId, userId, content, callback) => {
-        const sql = `INSERT INTO comments (thread_id, user_id, content) VALUES (?, ?, ?)`;
+        const sql = `INSERT INTO comments (FK_thread_id, FK_users_id, content) VALUES (?, ?, ?)`;
         db.run(sql, [threadId, userId, content], function (err) {
             if (err) return callback(err);
             callback(null, this.lastID);
@@ -13,9 +13,10 @@ const Comment = {
 
     // 📌 Получить все комментарии к треду
     getByThreadId: (threadId, callback) => {
-        const sql = `SELECT comments.*, users.username FROM comments 
-                     JOIN users ON comments.user_id = users.id 
-                     WHERE thread_id = ? ORDER BY created_at ASC`;
+        const sql = `SELECT comments.*, users.username 
+                     FROM comments 
+                     JOIN users ON comments.FK_users_id = users.id 
+                     WHERE FK_thread_id = ? ORDER BY created_at ASC`;
         db.all(sql, [threadId], callback);
     },
 

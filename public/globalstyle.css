@@ -1,3 +1,26 @@
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #323232;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, top 0.5s ease;
+    z-index: 9999;
+}
+
+.toast.show {
+    opacity: 1;
+    pointer-events: auto;
+    top: 40px;
+}
+
+
 html body {
     overscroll-behavior: none;
 }
@@ -6,6 +29,10 @@ body {
     top: 0;
     left: 0;
     margin: 0;
+}
+
+button {
+    all: unset;
 }
 
 ::-webkit-scrollbar {
@@ -98,7 +125,6 @@ header {
     gap: 1rem;
     width: auto;
     white-space: nowrap;
-    padding-right: 1vw;
 }
 
 h2 {
@@ -481,14 +507,17 @@ input {
 
 .menu {
     width: 300px;
-    border: 2px solid black;
+    border: 1px solid black;
+    border-right: none;
     border-radius: 0px 0px 15px 15px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-right: 0;
+
     position: absolute;
-    margin-top: 2rem;
+    margin-top: 1vh;
     right: 0;
     background: white;
     border-top: none;
@@ -513,7 +542,7 @@ input {
     background: #eee;
     border-radius: 20px;
     cursor: pointer;
-    border: 2px solid black;
+    border: 1px solid black;
     display: flex;
     align-items: center;
     /* выравнивание по вертикали */
@@ -528,9 +557,8 @@ input {
     background: violet;
     border-radius: 50%;
     transition: 0.3s;
-    border: 2px solid black;
+    border: 1px solid black;
     position: relative;
-    border: 2px solid black;
 }
 
 .switch.on .switch-circle {
@@ -572,8 +600,8 @@ body.dark .menu-exit:hover {
 
 .menu-button {
     border-radius: 1rem;
-    height: 3rem;
-    border: 2px solid black;
+    height: 1rem;
+    border: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -589,8 +617,8 @@ body.dark .menu-exit:hover {
 
 .menu-exit {
     border-radius: 1rem;
-    height: 4rem;
-    border: 2px solid black;
+    height: 2rem;
+    border: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -622,5 +650,36 @@ body.dark .menu-exit:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid black;
+    border: 1px solid black;
+}
+
+.profile-on-header {
+    display: none;
+}
+
+.register {
+    width: 6rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    margin-left: 1rem;
+    color: #ffffff;
+    font-family: inter;
+    border-radius: 25px;
+}
+
+.registers {
+    display: flex;
+
+
+}
+
+.register-on-head {
+    background-color: #1A604B;
+
+}
+
+.login-on-head {
+    background-color: #1A2260;
+    margin-right: 1rem;
 }

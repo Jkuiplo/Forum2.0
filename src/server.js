@@ -11,10 +11,9 @@ const app = express();
 applyMiddleware(app);
 
 // Apply routes
-applyRoutes(app);
-
 applyStatic(app);
 
+applyRoutes(app);
 
 // Google Auth
 app.use(passport.initialize());
@@ -37,6 +36,7 @@ app.get(
 		res.cookie("token", token, {
 			httpOnly: false,
 			secure: false,
+			maxAge: 7 * 24 * 60 * 60 * 1000
 		});
 		res.redirect("/");
 	}
