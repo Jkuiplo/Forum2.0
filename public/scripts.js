@@ -1,3 +1,14 @@
+const profile = document.getElementById("profile");
+profile.addEventListener("click", () => {
+    window.location.href = "/profile";
+  }
+);
+
+const exit = document.getElementById("exit");
+exit.addEventListener("click", () => {
+    window.location.href = "/logout";
+  }
+);
 // --------------------Функция для получения куки--------------------
 
 function getCookie(name) {
@@ -137,36 +148,7 @@ registerForm.addEventListener('submit', async (event) => {
 
 // --------------------Если токен есть, отображаем ник, создание поста ! Надо добавить отображение аватаров ! --------------------
 
-const token = getCookie('token');
-const profileContainer = document.querySelector(".profile-on-header");
 
-if (token) {
-  fetch("http://localhost:5000/api/auth/me", {
-    method: "GET",
-    headers: {
-      "Authorization": "Bearer " + token
-    }
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.username) {
-        console.log("зареган");
-       // скрываем логин и регистрацию если есть токен
-        const registerBlock = document.querySelector(".registers");
-        registerBlock.style.display = "none";
-
-        const profileBlock = document.querySelector(".profile-on-header");
-        profileBlock.style.display = "flex";
-      }
-    })
-    .catch(error => {
-      console.error("Ошибка:", error);
-    });
-  }
-  else {
-    console.log("Не авторизован");
-  }
-          
   
 
 

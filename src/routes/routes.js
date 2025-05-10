@@ -16,6 +16,10 @@ router.get('/authorization', (req, res) => {
 
 router.get('/logout', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', '/public/pages/logout/logout.html'));
-})
+});
+
+router.get('/profile', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', '/public/pages/profile/profile.html'));
+});
 
 module.exports = router;

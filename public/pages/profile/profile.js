@@ -1,76 +1,47 @@
-// ---------------- postData
-const postData = [{ // BACKEND меняеш данные о постах
-    id: 1,
-    user: 'Daniel',
-    comment: 'lorem ipsum disyngo koroche',
-    likes: 3,
-    image: '/public/img/profile.png'
-},
-{
-    id: 2,
-    user: 'Daniel',
-    comment: 'lorem ipsum disyngo koroche',
-    likes: 3,
-    image: '/public/img/profile.png'
-},
-{
-    id: 3,
-    user: 'Daniel',
-    comment: 'lorem ipsum disyngo koroche',
-    likes: 3,
-    image: '/public/img/profile.png'
-},
-{
-    id: 4,
-    user: 'Daniel',
-    comment: 'lorem ipsum disyngo koroche',
-    likes: 3,
-    image: '/public/img/profile.png'
-},
-{
-    id: 5,
-    user: 'Daniel',
-    comment: 'lorem ipsum disyngo koroche',
-    likes: 3,
-    image: '/public/img/profile.png'
-},
-]
 
-const postsDIV = document.getElementById('profile_posts')
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    if (match) return match[2];
+    return null;
+}
+const token = getCookie('token');
 
+async function getUserData() {
+    if (token) {
+        fetch("http://localhost:5000/api/auth/me", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.username) {
+                    const userName = document.getElementById('profile-name');
+                    userName.innerHTML = data.username;
 
-postData.forEach(item => {
-    const post = document.createElement('div');
-    post.className = 'profile-post';
-    post.innerHTML = `
-    <img class='avatar' src='${item.image}' alt=''/>
-    <div class='info'>
-      <h3>${item.user}</h3>
-      <p>${item.comment}</p>
-      <span><img src='/img/thumb_up.svg'/> ${item.likes}</span>
-    </div>
-    `;
-    postsDIV.append(post);
+                    const avatar = document.getElementById('profile-image');
+                    avatar.src = data.avatar || "/public/img/profile.svg";
+                    console.log(data);
+                }
+            })
+            .catch(error => {
+                console.error("Ошибка:", error);
+            });
+    }
+    else {
+        console.log("Не авторизован");
+    }
+}
+getUserData().then(data => {
+
 });
 
 
 // ---------------- menu active tab
 
-const menu = document.getElementsByClassName('section-menu')
 
-// ---------------- setting user 
 
-const profileName = 'Aidyn' // BACKEND - имя пользователя 
-const profileFollowers = 12 // BACKEND - подписчики пользователя 
-const profileImage = '/img/images.jpeg'  // BACKEND - изображение пользователя 
-
-const profileNameDIV = document.getElementById('profile-name')
-const profileFollowersDIV = document.getElementById('profile-followers')
-const profileImageDIV = document.getElementById('profile-image')
-
-profileNameDIV.innerHTML = profileName
-profileFollowersDIV.innerHTML = profileFollowers
-profileImageDIV.src = profileImage
 
 
 

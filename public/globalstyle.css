@@ -515,14 +515,12 @@ input {
     flex-direction: column;
     gap: 15px;
     margin-right: 0;
-
-    position: absolute;
-    margin-top: 1vh;
+    margin-top: 330;
     right: 0;
+    position: absolute;
     background: white;
     border-top: none;
     z-index: 10;
-
     right: 0px;
 }
 

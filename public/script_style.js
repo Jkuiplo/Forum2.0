@@ -44,14 +44,17 @@ overlay_popup.addEventListener('click', () => {
 
 const toggleMenuBtn = document.getElementById('profile-button');
 const menu = document.getElementById('menu');
-const themeSwitch = document.getElementById('themeSwitch');
 
-toggleMenuBtn.addEventListener('click', () => {
+toggleMenuBtn.addEventListener('click', (e) => {
+
+  e.stopPropagation(); // Важно: предотвращаем всплытие
   menu.classList.toggle('hidden-menu');
 });
 
+// Закрываем меню при клике вне его области
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.menu-wrapper')) {
+  if (!e.target.closest('.menu-wrapper') &&
+    !e.target.closest('#profile-button')) {
     menu.classList.add('hidden-menu');
   }
 });

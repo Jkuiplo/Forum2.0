@@ -4,6 +4,7 @@ const authRoutes = require("./authRoutes");
 const threadRoutes = require("./threadRoutes");
 const commentRoutes = require("./commentRoutes");
 const voteRoutes = require("./voteRoutes");
+const avatarRoutes = require("./avatarRoutes");
 
 module.exports = (app) => {
 
@@ -12,6 +13,7 @@ module.exports = (app) => {
     app.use("/api/threads", threadRoutes);
     app.use("/api/comments", commentRoutes);
     app.use("/api/votes", voteRoutes);
+    app.use("/api/avatar", avatarRoutes);
 };
 
 

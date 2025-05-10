@@ -51,7 +51,7 @@ exports.loginUser = (req, res) => {
 };
 
 exports.getUserProfile = (req, res) => {
-	db.get("SELECT id, username, email FROM users WHERE id = ?", [req.user.id], (err, user) => {
+	db.get("SELECT * FROM users WHERE id = ?", [req.user.id], (err, user) => {
 		if (err || !user) {
 			return res.status(404).json({ message: "Пользвоатель не найден" });
 		}
