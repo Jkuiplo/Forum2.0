@@ -31,6 +31,7 @@ if (token2) {
 				const profileBlock = document.querySelector(".profile-on-header");
 				profileBlock.style.display = "flex";
 
+
 				const name = document.getElementById("names");
 				name.innerHTML = data.username;
 
