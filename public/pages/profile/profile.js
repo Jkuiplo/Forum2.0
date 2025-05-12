@@ -38,13 +38,61 @@ getUserData().then(data => {
 });
 
 
-// ---------------- menu active tab
+// 
+
+import { getFollowersCount, toggleFollow } from "../../api/user.js";
+
+const followBtn = document.getElementById("profile-subs");
+const followersCounter = document.getElementById("followers-followers");
+
+const viewedUserId = new URLSearchParams(window.location.search).get("id");
+
+async function loadFollowers() {
+    const { followers } = await getFollowersCount(viewedUserId);
+    followersCounter.textContent = `Подписчиков: ${followers}`;
+}
+
+followBtn.addEventListener("click", async () => {
+    const result = await toggleFollow(viewedUserId, token);
+    followBtn.textContent = result.followed ? "Отписаться" : "Подписаться";
+    await loadFollowers(); // обновим счётчик
+});
+
+loadFollowers();
 
 
 
 
 
+const profileImage = document.getElementById('profile-image');
+const fileInput = document.getElementById('avatar-input');
 
+profileImage.addEventListener('click', () => {
+    fileInput.click(); // Открыть окно выбора файла
+});
 
+fileInput.addEventListener('change', async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
 
+    const formData = new FormData();
+    formData.append('avatar', file);
+
+    const res = await fetch('/api/avatar', {
+        method: 'POST', 
+        headers: {
+            // токен, если требуется
+            Authorization: 'Bearer ' + token
+        },
+        body: formData
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+        profileImage.src = '/' + data.avatar; // показать новый аватар
+        alert('Аватар обновлён!');
+    } else {
+        alert('Ошибка: ' + data.message);
+    }
+});
 

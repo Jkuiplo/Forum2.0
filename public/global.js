@@ -47,35 +47,3 @@ else {
 	console.log("Не авторизован");
 }
 
-
-const profileImage = document.getElementById('profile-image');
-const fileInput = document.getElementById('avatar-input');
-
-profileImage.addEventListener('click', () => {
-	fileInput.click(); // Открыть окно выбора файла
-});
-
-fileInput.addEventListener('change', async () => {
-	const file = fileInput.files[0];
-	if (!file) return;
-
-	const formData = new FormData();
-	formData.append('avatar', file);
-
-	const res = await fetch('/api/avatar', {
-		method: 'POST',
-		headers: {
-			// токен, если требуется
-			Authorization: 'Bearer ' + token2
-		},
-		body: formData
-	});
-
-	const data = await res.json();
-	if (res.ok) {
-		profileImage.src = '/' + data.avatar; // показать новый аватар
-		alert('Аватар обновлён!');
-	} else {
-		alert('Ошибка: ' + data.message);
-	}
-});
